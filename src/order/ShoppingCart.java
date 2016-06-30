@@ -1,6 +1,7 @@
 package order;
 
 import productData.Product;
+import productData.ProductManager;
 import support.ProductNotFoundException;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 
  */
 
-public class ShoppingCart {
+public  class ShoppingCart {
     private ArrayList<Product> cart;
 
     /**
@@ -39,11 +40,7 @@ public class ShoppingCart {
      * @throws ProductNotFoundException the product not found exception
      */
     public Product locater(String ID) throws ProductNotFoundException{
-        for(Product i: cart){
-            if (i.getProductID().equals(ID))
-                return i;
-        }
-        throw new ProductNotFoundException(ID);
+        return ProductManager.productLocator(ID);
     }
 
     /**

@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import productData.ProductCatalog;
+import productData.ProductManager;
 
 public class DeleteProduct extends JFrame 
 {
@@ -44,7 +45,7 @@ public class DeleteProduct extends JFrame
 
 			number = JOptionPane
 					.showInputDialog("Please input the product ID which you would like to delete");
-			//id = Integer.parseInt(number);
+			id = number;
 			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		} 
@@ -57,9 +58,8 @@ public class DeleteProduct extends JFrame
 	{
 
 			//id = Integer.parseInt(number);
-			ProductCatalog pc = new ProductCatalog();
-				pc.rmProduct(id);
-				pc.save();
+
+				ProductManager.rmProduct(id);
 				JOptionPane.showMessageDialog(null,
 						"Deleted ticket#" + id+ " successfully! ");
 

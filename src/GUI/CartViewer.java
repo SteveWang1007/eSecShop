@@ -25,7 +25,7 @@ public class CartViewer extends JFrame
 		String[] columnNames = { "Product ID.", "Product Name","Product Type", "Description", "Price"}; // column name
 		Object[][] rowData = new Object[50][14]; // column and array number
 		ShoppingCart sc = new ShoppingCart();
-		plist = ShoppingCart.getCart();
+		plist = sc.getCart();
 		
 		try {
 				int count = 0;

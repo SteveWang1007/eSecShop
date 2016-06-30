@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import order.ShoppingCart;
+import productData.ProductManager;
+import support.ProductNotFoundException;
 
 public class AddToCart extends JFrame 
 {
@@ -42,7 +44,14 @@ public class AddToCart extends JFrame
 
 			number = JOptionPane
 					.showInputDialog("Please input the product ID of the item you would like to add");
-			
+
+			id = number;
+			try{
+				ProductManager.productLocator(id);
+			}
+			catch (ProductNotFoundException pnf){
+				System.err.print(pnf.getMessage());
+			}
 
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		} 

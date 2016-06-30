@@ -88,12 +88,13 @@ public class ProductCatalog implements FileAccessable{
      */
     public Product productLocater(String productID) throws ProductNotFoundException{
         for(Product i:catalog){
-            if (productID == i.getProductID()) {
+            if (productID.equals(i.getProductID())) {
                 return i;
             }
         }
         throw new ProductNotFoundException(productID);
     }
+
 
     /**
      * Add product in to this catalog

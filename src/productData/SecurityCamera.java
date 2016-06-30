@@ -1,5 +1,7 @@
 package productData;
 
+import support.ProductNotFoundException;
+
 /**
  * Class {@code SecurityCamera} handles the product list for Accessories session. it extend ProductCatalog
  *
@@ -12,5 +14,9 @@ public class SecurityCamera extends ProductCatalog {
      */
     public SecurityCamera(){
         super("SecurityCamera");
+    }
+
+    public Product productLocater(String productID) throws ProductNotFoundException{
+        return super.productLocater(productID);
     }
 }

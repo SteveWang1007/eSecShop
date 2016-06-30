@@ -13,7 +13,7 @@ import java.util.ArrayList;
  *
  * @author  Tianqi Cheng
  **/
-public class ProdcutManager {
+public class ProductManager {
 
 
     /**
@@ -47,12 +47,9 @@ public class ProdcutManager {
      * Rm product.
      *
      * @param ID  the id
-     * @param usr the usr
      * @throws ProductNotFoundException the product not found exception
-     * @throws NoAccessPermitException  the no access permit exception
      */
-    public static void rmProduct(String ID, User usr) throws ProductNotFoundException, NoAccessPermitException {
-        isAccessible(usr,ID);
+    public static void rmProduct(String ID) throws ProductNotFoundException {
         String pt = ID.substring(0);
         ProductCatalog p;
         switch (pt) {
@@ -69,6 +66,24 @@ public class ProdcutManager {
                 p.rmProduct(ID);
 
         }
+    }
+
+    public static Product productLocator(String ID) throws ProductNotFoundException {
+        String pt = ID.substring(0,1);
+        ProductCatalog p;
+        switch (pt) {
+            case "1":
+                p = new SecurityCamera();
+                return p.productLocater(ID);
+            case "2":
+                p = new DVR();
+                return p.productLocater(ID);
+            case "3":
+                p = new Accessories();
+                return p.productLocater(ID);
+
+        }
+        throw new ProductNotFoundException(ID);
     }
 
     /**

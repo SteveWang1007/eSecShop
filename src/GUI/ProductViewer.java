@@ -3,14 +3,10 @@ package GUI;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import productData.ProductManager;
 
-import productData.ProductCatalog;
-import productDetails.Product;
-
-import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductViewer extends JFrame 
@@ -26,8 +22,7 @@ public class ProductViewer extends JFrame
 		
 		String[] columnNames = { "Product ID.", "Product Name","Product Type", "Description", "Price"}; // column name
 		Object[][] rowData = new Object[50][14]; // column and array number
-		ProductCatalog pc = new ProductCatalog();
-		plist = pc.browseProduct();
+		plist = ProductManager.browseProduct();
 		//plist = pl;
 		try {
 				int count = 0;

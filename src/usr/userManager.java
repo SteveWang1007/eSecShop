@@ -11,6 +11,7 @@ import support.UserNotFoundException;
  * @author  Tianqi Cheng
  * @see     support.DataManager;
  */
+
 public class UserManager extends DataManager{
     /**
      * Instantiates a new User manager.

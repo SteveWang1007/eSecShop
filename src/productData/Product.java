@@ -144,6 +144,10 @@ public class Product implements Serializable{
                 + "," + statement;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Product clone() {
         return new Product(this.productID,this.name,this.price, this.stock, this.statement, this.type);
     }
