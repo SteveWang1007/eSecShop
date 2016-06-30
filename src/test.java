@@ -8,6 +8,11 @@ import java.util.ArrayList;
  * Created by mac on 16/6/25.
  */
 public class test {
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main(String args[]){
         UserInterface ui = new UserInterface();
 

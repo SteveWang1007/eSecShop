@@ -4,18 +4,32 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by mac on 16/6/27.
+ * Class {@code Catalog} handles the data with text file. In order to save memory from large scale
+ * data base, every catalog object only contain 100 object.
+ *
+ * @author  Tianqi Cheng
  */
 public abstract class Catalog implements FileAccessable{
     protected ArrayList<Object> catalog;
     private String catalogID;
     private String name;
 
+    /**
+     * Crate a catalog base on its type, it can be a user or order.
+     *
+     * @param n the type
+     */
     public Catalog(String n){
         this.name = n;
         newCatalog();
     }
 
+    /**
+     * Load pacific text file into memory.
+     *
+     * @param n  the type
+     * @param ID the id
+     */
     public Catalog(String n,String ID){
         catalogID = ID;
         this.name = n;
@@ -47,6 +61,9 @@ public abstract class Catalog implements FileAccessable{
         }
     }
 
+    /**
+     * New catalog.
+     */
     public void newCatalog(){
         try {
             FileReader fr = new FileReader("/"+name+"/index.txt");
@@ -82,18 +99,38 @@ public abstract class Catalog implements FileAccessable{
         }
     }
 
+    /**
+     * Get catalog array list.
+     *
+     * @return the array list
+     */
     public ArrayList<Object> getCatalog(){
         return catalog;
     }
 
+    /**
+     * Is full boolean.
+     *
+     * @return the boolean
+     */
     public boolean isFull(){
         return catalog.size() < 100;
     }
 
+    /**
+     * Gets catalog id.
+     *
+     * @return the catalog id
+     */
     public String getCatalogID() {
         return catalogID;
     }
 
+    /**
+     * Gets name.
+     *
+     * @return the name
+     */
     public String getName() {
         return name;
     }

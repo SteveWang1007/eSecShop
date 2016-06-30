@@ -5,9 +5,16 @@ import support.NoAccessPermitException;
 import support.UserNotFoundException;
 
 /**
- * Created by mac on 16/6/29.
+ * Class {@code UserManager} is the management class for all order. It extend from the
+ * class {@code DataManager}
+ *
+ * @author  Tianqi Cheng
+ * @see     support.DataManager;
  */
 public class UserManager extends DataManager{
+    /**
+     * Instantiates a new User manager.
+     */
     public UserManager() {
         super.currentCatalog = new UserCatalog();
     }
@@ -18,6 +25,13 @@ public class UserManager extends DataManager{
             uc = new UserCatalog();
     }
 
+    /**
+     * New employee.
+     *
+     * @param ne the ne
+     * @param hr the hr
+     * @throws NoAccessPermitException the no access permit exception
+     */
     public void newEmployee(User ne, User hr)throws NoAccessPermitException {
         if (!(hr instanceof humanResource))
             throw new NoAccessPermitException("Employee Data");
@@ -26,6 +40,12 @@ public class UserManager extends DataManager{
 
     }
 
+    /**
+     * New customer.
+     *
+     * @param ne the ne
+     * @throws NoAccessPermitException the no access permit exception
+     */
     public void newCustomer(User ne)throws NoAccessPermitException{
         if (!(ne instanceof Customer))
             throw new NoAccessPermitException("Customer Data");
@@ -33,6 +53,13 @@ public class UserManager extends DataManager{
             register(ne);
     }
 
+    /**
+     * User locator user.
+     *
+     * @param ID the id
+     * @return the user
+     * @throws UserNotFoundException the user not found exception
+     */
     public User userLocator(String ID) throws UserNotFoundException {
         String catalogID = ID.substring(0,ID.length()-2);
         String userID = ID.substring(ID.length()-2,ID.length());
@@ -40,6 +67,13 @@ public class UserManager extends DataManager{
         return uc.userLocator(userID);
     }
 
+    /**
+     * Login boolean.
+     *
+     * @param ID the id
+     * @param pw the pw
+     * @return the boolean
+     */
     public boolean login(String ID,String pw) {
         try {
             return (userLocator(ID)).logIn(pw);
@@ -50,6 +84,11 @@ public class UserManager extends DataManager{
         }
     }
 
+    /**
+     * Log out.
+     *
+     * @param usr the usr
+     */
     public void logOut(User usr){
         usr.logOut();
     }

@@ -5,11 +5,22 @@ import support.Address;
 import java.util.ArrayList;
 
 /**
- * Created by mac on 16/6/26.
+ * Class {@code DeliverOrder} is the class for the deliver order.
+ *
+ * @author      Tianqi Cheng
+ * @see         order.Order
+ *
  */
 public class DeliverOrder extends Order {
     private Address address;
 
+    /**
+     *
+     * Default constructor for crate a deliver order
+     *
+     * @param ID      the order ID
+     * @param address the deliver address
+     */
     public DeliverOrder(String ID,Address address) {
         super(ID);
         this.address = address;

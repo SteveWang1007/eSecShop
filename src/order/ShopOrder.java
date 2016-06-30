@@ -13,7 +13,11 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by mac on 16/6/26.
+ * Class {@code ShopOrder} handle the purchase request and generate a object for user
+ * to tracking the status.
+ *
+ * @author  Tianqi Cheng
+ * @see     order.Order
  */
 public class ShopOrder extends Order{
     private Customer customer;
@@ -22,6 +26,14 @@ public class ShopOrder extends Order{
     private DeliverOrder delivery;
 
 
+    /**
+     * Constructor for user check out only.
+     *
+     * @param ID        the id
+     * @param orderList the shopping list
+     * @param payment   the payment method
+     * @param delO      the Deliver Order
+     */
     public ShopOrder(String ID, ArrayList<Product> orderList, PayMethod payment, DeliverOrder delO) {
         super(ID);
         this.orderList = orderList;
@@ -31,6 +43,17 @@ public class ShopOrder extends Order{
         super.status.add("Wait for confirm,system,"+currentDate());
     }
 
+    /**
+     * The constructor for loading or duplicate.
+     *
+     * @param orderID    the order id
+     * @param supervisor the supervisor
+     * @param customer   the customer
+     * @param orderList  the order list
+     * @param payment    the payment
+     * @param delivery   the delivery
+     * @param status     the status
+     */
     public ShopOrder(String orderID, User supervisor, Customer customer, ArrayList<Product> orderList, PayMethod payment, DeliverOrder delivery, ArrayList<String> status) {
         super(orderID, supervisor, status);
         this.customer = customer;
@@ -39,26 +62,56 @@ public class ShopOrder extends Order{
         this.delivery = delivery;
     }
 
+    /**
+     * Gets customer.
+     *
+     * @return the customer
+     */
     public Customer getCustomer() {
         return customer;
     }
 
+    /**
+     * Gets order list.
+     *
+     * @return the order list
+     */
     public ArrayList<Product> getOrderList() {
         return (ArrayList<Product>) orderList.clone();
     }
 
+    /**
+     * Sets order list.
+     *
+     * @param orderList the order list
+     */
     public void setOrderList(ArrayList<Product> orderList) {
         this.orderList = orderList;
     }
 
+    /**
+     * Gets payment.
+     *
+     * @return the payment
+     */
     public PayMethod getPayment() {
         return payment;
     }
 
+    /**
+     * Gets delivery.
+     *
+     * @return the delivery
+     */
     public DeliverOrder getDelivery() {
         return delivery;
     }
 
+    /**
+     * Sets delivery.
+     *
+     * @param delivery the delivery
+     */
     public void setDelivery(DeliverOrder delivery) {
         this.delivery = delivery;
     }
@@ -72,6 +125,11 @@ public class ShopOrder extends Order{
 
     }
 
+    /**
+     * Return the total price.
+     *
+     * @return the total price
+     */
     public int total() {
         int result = 0;
         for(Product i:orderList){

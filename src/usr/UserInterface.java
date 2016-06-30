@@ -9,9 +9,18 @@ import java.io.*;
  * Created by mac on 16/6/26.
  */
 public class UserInterface {
+    /**
+     * The Current user.
+     */
     User currentUser;
+    /**
+     * The Current catalog.
+     */
     UserCatalog currentCatalog;
 
+    /**
+     * Instantiates a new User interface.
+     */
     public UserInterface(){
         try {
             currentUser = new Customer();
@@ -29,6 +38,11 @@ public class UserInterface {
         }
     }
 
+    /**
+     * Login.
+     *
+     * @throws IOException the io exception
+     */
     public void login() throws IOException{
         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Welcome to E-Security system!");
@@ -74,6 +88,11 @@ public class UserInterface {
 
     }
 
+    /**
+     * Register.
+     *
+     * @throws IOException the io exception
+     */
     public void register() throws IOException{
         BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Welcome to E-Security system Registration!");

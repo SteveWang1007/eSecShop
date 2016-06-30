@@ -1,7 +1,10 @@
 package usr;
 
 /**
- * Created by mac on 16/6/28.
+ * Class {@code customerService} handle the account of customerService
+ *
+ * @author  Tianqi Cheng
+ * @see     usr.Employee
  */
 public class customerService extends Employee {
 }

@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by mac on 16/6/26.
+ * Class {@code Customer} handle the customer information it extends User
+ *
+ * @author  Tianqi Cheng
+ * @see     usr.User
  */
 public class Customer extends User {
     private String emailAddress;
@@ -17,6 +20,9 @@ public class Customer extends User {
     private ArrayList<PayMethod> payBook;
     private ArrayList<Order> orderHistory;
 
+    /**
+     * Instantiates a new Customer.
+     */
     public Customer() {
         super();
         emailAddress = null;
@@ -25,6 +31,18 @@ public class Customer extends User {
         orderHistory = new ArrayList<Order>();
     }
 
+    /**
+     * Instantiates a new Customer.
+     *
+     * @param un           the un
+     * @param pw           the pw
+     * @param id           the id
+     * @param st           the st
+     * @param emailAddress the email address
+     * @param addressBook  the address book
+     * @param payBook      the pay book
+     * @param orderHistory the order history
+     */
     public Customer(String un, String pw, String id, boolean st, String emailAddress, ArrayList<Address> addressBook, ArrayList<PayMethod> payBook, ArrayList<Order> orderHistory) {
         super(un, pw, id, st);
         this.emailAddress = emailAddress;
@@ -33,30 +51,65 @@ public class Customer extends User {
         this.orderHistory = orderHistory;
     }
 
+    /**
+     * Gets email address.
+     *
+     * @return the email address
+     */
     public String getEmailAddress() {
         return emailAddress;
     }
 
+    /**
+     * Sets email address.
+     *
+     * @param emailAddress the email address
+     */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
+    /**
+     * Get default address string.
+     *
+     * @return the string
+     */
     public String getDefaultAddress(){
         return  addressBook.get(0).toString();
     }
 
+    /**
+     * Get default payment string.
+     *
+     * @return the string
+     */
     public String getDefaultPayment(){
         return payBook.get(0).toString();
     }
 
+    /**
+     * Gets order history.
+     *
+     * @return the order history
+     */
     public ArrayList<Order> getOrderHistory() {
         return orderHistory;
     }
 
+    /**
+     * Add order history.
+     *
+     * @param o the o
+     */
     public void addOrderHistory(Order o){
         orderHistory.add(o);
     }
 
+    /**
+     * View all address array list.
+     *
+     * @return the array list
+     */
     public ArrayList<String> viewAllAddress(){
         ArrayList<String> result=new ArrayList<>();
         for (Address i: addressBook){
@@ -65,6 +118,11 @@ public class Customer extends User {
         return result;
     }
 
+    /**
+     * View all payment array list.
+     *
+     * @return the array list
+     */
     public ArrayList<String> viewAllPayment(){
         ArrayList<String> result=new ArrayList<>();
         for (PayMethod i: payBook){
@@ -73,18 +131,40 @@ public class Customer extends User {
         return result;
     }
 
+    /**
+     * Set address.
+     *
+     * @param index the index
+     * @param add   the add
+     */
     public void setAddress(int index, Address add){
         addressBook.set(index, add);
     }
 
+    /**
+     * Set payment.
+     *
+     * @param index the index
+     * @param pay   the pay
+     */
     public void setPayment(int index, PayMethod pay){
         payBook.set(index,pay);
     }
 
+    /**
+     * Set default address.
+     *
+     * @param index the index
+     */
     public void setDefaultAddress(int index){
         Collections.swap(addressBook,0,index);
     }
 
+    /**
+     * Set default payment.
+     *
+     * @param index the index
+     */
     public void setDefaultPayment(int index){
         Collections.swap(payBook,0,index);
     }

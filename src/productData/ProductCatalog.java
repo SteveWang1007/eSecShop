@@ -8,12 +8,20 @@ import java.io.*;
 import java.util.ArrayList;
 
 /**
- * Created by mac on 16/6/27.
- */
+ * Class {@code ProductCatalog} handles the product list.
+ *
+ * @author  Tianqi Cheng
+ **/
+
 public class ProductCatalog implements FileAccessable{
     private ArrayList<Product> catalog;
     private String name;
 
+    /**
+     * Constructor
+     *
+     * @param Name the name
+     */
     public ProductCatalog(String Name){
         catalog = new ArrayList<Product>();
         this.name = Name;
@@ -58,6 +66,11 @@ public class ProductCatalog implements FileAccessable{
 
     }
 
+    /**
+     * Browse product
+     *
+     * @return the full product list
+     */
     public ArrayList<Product> browseProduct(){
         ArrayList<Product> result = new ArrayList<>();
         for(Product i:catalog){
@@ -66,6 +79,13 @@ public class ProductCatalog implements FileAccessable{
         return result;
     }
 
+    /**
+     * Locate product with ID
+     *
+     * @param productID the product id
+     * @return the product
+     * @throws ProductNotFoundException the product not found exception
+     */
     public Product productLocater(String productID) throws ProductNotFoundException{
         for(Product i:catalog){
             if (productID == i.getProductID()) {
@@ -75,6 +95,12 @@ public class ProductCatalog implements FileAccessable{
         throw new ProductNotFoundException(productID);
     }
 
+    /**
+     * Add product in to this catalog
+     *
+     * @param np the np
+     * @throws RepeatProductException the repeat product exception
+     */
     public void newProduct(Product np) throws RepeatProductException{
         np.setType(name);
         for(Product i:catalog){
@@ -86,6 +112,12 @@ public class ProductCatalog implements FileAccessable{
         save();
     }
 
+    /**
+     * Rm product.
+     *
+     * @param ID the id
+     * @throws ProductNotFoundException the product not found exception
+     */
     public void rmProduct(String ID) throws ProductNotFoundException{
         Product p=productLocater(ID);
         if (catalog.remove(p)) {

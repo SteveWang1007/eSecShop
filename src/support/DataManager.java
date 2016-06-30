@@ -6,8 +6,13 @@ import productData.*;
 import usr.*;
 
 /**
- * Created by mac on 16/6/28.
+ * Class {@code DataManager} handles the searching and editing from differnt {@code Catalog} Object.
+ *
+ * @author  Tianqi Cheng
  */
 public abstract class DataManager {
+    /**
+     * The Current catalog.
+     */
     protected Catalog currentCatalog;
 }
