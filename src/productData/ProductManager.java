@@ -50,7 +50,7 @@ public class ProductManager {
      * @throws ProductNotFoundException the product not found exception
      */
     public static void rmProduct(String ID) throws ProductNotFoundException {
-        String pt = ID.substring(0);
+        String pt = ID.substring(0,1);
         ProductCatalog p;
         switch (pt) {
             case "1":

@@ -121,7 +121,7 @@ public class ProductCatalog implements FileAccessable{
      */
     public void rmProduct(String ID) throws ProductNotFoundException{
         Product p=productLocater(ID);
-        if (catalog.remove(p)) {
+        if (!catalog.remove(p)) {
             throw new ProductNotFoundException(ID);
         }
         save();
